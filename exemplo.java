@@ -102,6 +102,8 @@ public class exemplo {
          */
         System.out.println("\nDepois do Aprendizado ....\n");
         double acertos = 0;
+        double erros = 0;
+
         for (i = 0; i < entradas_test.length; i++) { //calculando a saída da propagação para cada entrada
             n.propagação(entradas_test[i]); //propaga o sinal de entrada i pela rede
 
@@ -114,12 +116,17 @@ public class exemplo {
             if(result(saida_esperada).equals(result(saida))) {
                 acertos++;
             }
+            else{
+                erros++;
+            }
             
             System.out.println("[" + i +"] Saida Esperada: [" + result(saida_esperada) +"]  Saida Real: [" + result(saida) + "]");
             //break;
         }
 
         System.out.println("\nACERTOS: " + acertos);
+        System.out.println("PRECISÃO: " + (acertos/(acertos+acertos)));
+        System.out.println("RECALL: " + (acertos/(acertos+erros)));
         System.out.println("ACURÁCIA: " + (acertos/entradas_test.length)*100 + "%\n");
     }
 
